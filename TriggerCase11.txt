@@ -1,0 +1,25 @@
+Create Contact record based on create n contacts field on the Account record
+--------------------------------------------------------------------
+Trigger TriggerAccount on Account (After insert){
+
+if(trigger.isAfter && trigger.isInsert){
+ 
+ Accounthandler.createContatct(Trigger.new);
+ 
+ class
+ 
+ public static Accounthandler {
+  public static void createContatct(Lis<Account> accred){
+  
+  List<Contat> conList = new List<Contact>();
+  for(Account acc :accred){
+  if(acc.Ncontact__c != null){
+    for(Integer i = 0; i<acc.Ncontact__c ; i++){
+	Contact con = new Contact();
+	con.LastNAme =  acc.Name +i;
+	con.ACcountId = acc.Id;
+	conLIst.add(con);}
+	}
+	}
+	if(!COnList.isEmpty()){
+	insert COnList;
