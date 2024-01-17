@@ -1,0 +1,13 @@
+case 8 
+-- id a contact is created without a parent Account,do not allow user to create the contact record
+
+Trigger ContactTrigger on Contact (before insert ){
+
+if(Trigger.isBefore && Trigger.isInsert){
+
+
+
+
+class - 
+public class contacttrigger {
+public static void contactInsert (List
