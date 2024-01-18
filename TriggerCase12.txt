@@ -1,0 +1,17 @@
+Do not allow lead deletion if it is working-contrcted
+
+
+Trigger TriggerLead on Lead (before delete ){
+         
+	if(trigger.isBefore && trigger.isdelete)	 
+    TriggerLeadclass.deletion(Trigger.old)
+	
+	
+	
+	
+public class TriggerLeadclass{
+ public static void deletion(List<lead> leadrecord){
+ for(lead ld : leadrecord){
+ if(ld.status == Working-Contracted);
+ ld.addError('not deleted);
+ 
