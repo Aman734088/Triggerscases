@@ -1,0 +1,32 @@
+Every time an account website is updated ,update the
+website field on all child contacts for the account .
+
+Trigger AccountTrigger On Account(After Update){
+ if(Trigger.isUpdate && Trigger.isAfter){
+ AccountTriggerHandler.handleAfterupdate(Trigger.new ,Trigger.oldMAp)
+ 
+ 
+ 
+ 
+ 
+ 
+ Class 
+ public class AccountTriggerHandler{
+  
+  public static void handleAfterupdate(List<ACcount>accr,Map<Id,acc>oldMap){
+  Map<Id,String> accToWeb = new Map<Id,String>();
+  for(Account acc : accr){
+  if(acc.website != oldMAp.get(acc.Id).website){
+  accToWeb.put(acc.id,acc.website);
+  }
+  }
+  if(accToWeb.keySet()>0){
+  List<Contact> addContoup = new <Contact>();
+  List<Contact> Conred = [Select Id, FirstName,website  from Contact
+                           where AccountId IN:accToWeb.keySet()];
+		for(COntact con :Conred){
+		con.website = accToWeb.get(con.AccountId);
+		
+		addContoup.add(con);
+		 update addContoup
+ 
