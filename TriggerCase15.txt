@@ -1,0 +1,31 @@
+As soon AS Oppo is closed lost , remove all oppoo team members from the oppo.
+
+
+
+Trigger triggeroppo on Oppo (after update){
+
+if(Trigger.isAfter && Trigger.isUpdate){
+
+oppoTriggerHandler.handleactivitesafterUpdate(Trigger.new)
+}
+
+
+class
+
+ public class oppoTriggerHandler {
+ public static void handleactivitesafterUpdate(List<oppo> nreopoRecord){
+ Set<id> oppoid = new Set<id>();
+ List<oppoteammember> deletteammen = new List<oppoteammember>();
+ for(oppo op1 : nreopoRecord){
+	oppoid.add(op1.id);
+	}
+	List<oppoteammember> opotm = [select id ,oppoid from oppoteammember where oppoid in:oppoid];
+ for(oppo op : nreopoRecord){
+ if(op.stageName == 'closed Lost'){
+ for(oppoTeamMenber otm : opotm){
+ if(otm.opoid == opp.id){
+ deletteammen.add(otm);
+ }
+ 
+ if(!deletteammen.isEmpty())
+ delete deletteammen;
