@@ -1,0 +1,28 @@
+Check if a contact record exist with the same last name ,email& phone .
+if so do not let new contact createion.
+
+
+
+Trigger 
+
+Trigger ContactTrigger On Contact (before insert) {
+
+if(Trigger.isBefore && Trigger.isInsert){
+ ContactTriggerClass.TriggerConhandler(Trigger.new);
+ 
+}
+
+
+class
+
+
+public static class ContactTriggerClass {
+
+public static void TriggerConhandler (List<Contact> newRecord){
+	List<Contact> existingContact = [Select id, Lastname.email,phone from Conatct limit 50000];
+	for(Contact con : newRecord){
+	for(Contact econ : existingContact){
+	if(con.lastname == econ.lastname ----)
+	con.addError('alreadt exist);
+	}
+	
