@@ -1,0 +1,26 @@
+As soon as an oppo is deleted ,create a task for the oppo Acc owner to investigate
+why the record was deleted and sumit the info.
+
+
+Trigger oppoTrigger on opppo (After delete)
+
+
+if(Trigger.isAfter && Trigger.is delete){
+
+OppoClass.oppoHandler(Trigger.old);
+
+
+
+class 
+ class oppo {
+ oppoHandler(List<oppo> oldRecords){
+ List<Task> tskList = new List<Task>();
+ for(Oppo op: oldRecords){
+ Task tsk = new Task();
+ tsk.discription = 'hey';
+ tsk.ownerId = op.AccountID.ownerId;
+ 
+ tskList.add(tsk);
+ 
+ if(!tskList.isEmpty()){
+ insert tskList;
