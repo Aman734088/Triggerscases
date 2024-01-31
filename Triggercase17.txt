@@ -1,0 +1,25 @@
+As soon as a contact is created,share the contact record with all users who
+are part of the contact innovatord public group
+
+
+Trigger contactTrigger On Contact(After insert){
+ if(Trigger.isInsert && Trigger.isAfter){
+ ContactTriggerHandler.handleAfte(Trigger.new);}
+ 
+ 
+ class
+ 
+ 
+ public class ContactTriggerHandler {
+ public static void handleAfter(List<Contact> newrecords){
+ Id conInnovPublicgrp = [select id,name from group where name = 'contact innvayore limit 1].id;
+ List<ContactShare> consList = new List<ContactShare>();
+ for(Contact con : newrecords){
+	ContactShare cs = new ContactShare();
+	cs.contactId = con.id;
+	cs.rowCaise =- 'manual;
+	cs.userGroupId =  conInnovPublicgrp;
+	consList.add(cs);
+	if(!conList.isEmpty()){
+	insert conList;
+	
