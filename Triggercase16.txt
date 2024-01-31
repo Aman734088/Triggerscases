@@ -1,0 +1,18 @@
+Allow case deletion only by system Admin user
+
+Trigger 
+
+Trigger Casetrigger on case (before delete){
+if(Trigger.isbefore && Trigger.isDelete){
+
+	TriggerCaseClas.caseHandler(Trigger.old);
+	}
+	
+class 
+public class TriggerCaseClas { 
+ public static void caseHandler (List<Case> oldRecd){
+	Id Current  = UserInfo.getProfileId();
+	Id SysAdminpro = [ Select id, Name , from profile where name = 'sys admin' limit 1.id];
+	for(Case cse: oldRecd){
+	if(sysAdminpro != Current)
+	cse.addEWrror
